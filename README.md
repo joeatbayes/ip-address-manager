@@ -15,14 +15,15 @@ It differs from DNS dynamic IP mapping because most of the network infrastructur
 
 # Requirements
 * Must be able to manage a set of 1 to 5 million unique IP addresses.
-* Must be able to separate IP addresses into security groups where a range of IP addresses can be defined for each security zone.
 
 * Security Requirements
+  * Must be able to separate IP addresses into security groups where a range of IP addresses can be defined for each security zone.
   * Must be able to manage a seprate set of addresses for different clouds.
   * Must be able to manage a separate set of addresses for different security zones.
   * Must be able to manage a separate set of addresses for different clousts + different security zones.
   * Security tools must receive a logging event when a IP address is allocated to a specific VM.
   * Secuirty tools must receive a logging event when a IP address is released for use by a specific VM.
+  * Service must only be accessible from designated trusted callers.
 
 * Must Not require hardcoding IP addresses in any source scripting.
 * Once assigned a IP address must remain bound to a given VM until it is explicitly released.
