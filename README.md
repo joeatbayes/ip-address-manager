@@ -1,4 +1,4 @@
-# ip Address Manager
+# IP Address Manager
 Manage IP use and reallocation of IP addresses from a pre-allocated pool.   Useful in bridging dynamic provisioning for clouds when full SDN is not yet feasible for the org.
 
 A service to manage a set of IP addresses so they can be allocated to virtual machines as they are needed.  Works against a pre-allocated pool of IP Addresses where they appear to most of the network as static provisioned IP addreses.   It allows the provisioning scripts to obtain a IP address in a specific IP address upon request and then continue to provisioning process using the IP address obtained.  
@@ -27,10 +27,11 @@ It differs from DNS dynamic IP mapping because most of the network infrastructur
 * Changes must be written to persistent storage immediatley before response from service.
 * Must be able to produce a DNS zones file from the known IP address allocations allocations. 
 * Service must allow multiple request so a single call can all allocation of many IP addresses needed for a complex enviornment.  This should be returned in a format compatible for inclusion in a Heat script.
-* Service must reload wiht all known mapping quickly in less than 5 minutes.
-* Service must update boht local and remote data store to allow re-setup after reboot.
-* Service should reload without data loss provided primary data storage mount remains available upon provisioning a new service.
-* Service on restart must be able to restart with less than 5 seconds allocation loss from secondary storage upon failure of primary service and primary storage.
+* Provisioning & Recovery
+Service must reload wiht all known mapping quickly in less than 5 minutes.
+** Service must update boht local and remote data store to allow re-setup after reboot.
+** Service should reload without data loss provided primary data storage mount remains available upon provisioning a new service.
+** Service on restart must be able to restart with less than 5 seconds allocation loss from secondary storage upon failure of primary service and primary storage.
 
 # Design Nodes
 * We should support calling the service to get all the IP addresses needed for an enviornment so a file can be generated and the loaded with the [get file](https://docs.openstack.org/heat/latest/template_guide/software_deployment.html) command.
