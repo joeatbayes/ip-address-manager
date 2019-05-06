@@ -7,13 +7,23 @@ It differs from DNS dynamic IP mapping because most of the network infrastructur
 
 # Assumptions
 * Each security zone can be defined as a subset of IP addresses.
-* IP addresses can be released and re-used by other VM.
-
+* IP addresses can be released and re-used by another VM.
+* Once allocated a static IP address can be used indefinitely by a VM.
+* We need to support managing IP addresses for multiple enviornments simutaneously without conflict.
+* 
 
 # Requirements
+* Must be able to manage a set of 1 to 5 million unique IP addresses.
 * Must be able to separate IP addresses into security groups where a range of IP addresses can be defined for each security zone.
-* 
 * Security tools must receive a logging event when a IP address is allocated to a specific VM.
-* Secuirty tools 
+* Secuirty tools must receive a logging event when a IP address is released for use by a specific VM.
+*
+* Once assigned a IP address must remain bound to a given VM until it is explicitly released.
+* Changes must be written to persistent storage immediatley before response from service.
+* Service must reload wiht all known mapping quickly in less than 5 minutes.
+* Service must update boht local and remote data store to allow re-setup after reboot.
+* Service should reload without data loss provided primary data storage mount remains available upon provisioning a new service.
+* Service on restart must be able to restart with less than 5 seconds allocation loss from secondary storage upon failure of primary service and primary storage.
+
 
 
